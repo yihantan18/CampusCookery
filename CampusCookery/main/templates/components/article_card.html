@@ -1,0 +1,27 @@
+<a href="{%url 'article_detail' article.id%}" class="card">
+    <img src="{{article.image.url}}" alt="Article Image" />
+    <div class="card-info">
+        <div class="card-header">
+            <h3 class="card-title">{{ article.title }}</h3>
+
+            <p>{{ article.body|safe|slice:":50" }}...</p>
+        </div>
+
+        <div class="card-tags">
+            <div class="tag">
+                {{article.created_at|date:"F j, Y"}}
+            </div>
+
+            {% for tag in article.tag_set.all %}
+                <div class="tag">{{tag.title}}</div>
+            {%endfor%}
+
+
+            {% if recipe.rating %}
+                <div class="tag">
+                    <div class="stars">{{recipe.rating}}</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</a>

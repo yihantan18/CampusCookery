@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}FAQs - Campus Cookery{% endblock %}
+
+{% block content %}
+<div class="content-view">
+    <div class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <!-- FAQ List -->
+        <section>
+            <details>
+                <summary class="faq-question">Q: How can vegetarians ensure sufficient protein intake?</summary>
+                <ul class="faq-answer">
+                    <li><strong>Legumes and soy products</strong> - e.g., soybeans, tofu, soy milk.</li>
+                    <li><strong>Nuts and seeds</strong> - e.g., almonds, cashews, pumpkin seeds.</li>
+                    <li><strong>Whole grains</strong> - e.g., oats, quinoa, brown rice.</li>
+                    <li><strong>Dairy and eggs</strong> - Greek yogurt, cheese, milk.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary class="faq-question">Q: Can burnt stir-fry be saved?</summary>
+                <ul class="faq-answer">
+                    <li><strong>Lightly burnt</strong>: Transfer to a new pan immediately.</li>
+                    <li><strong>Mild burnt taste</strong>: Add vinegar or lemon juice.</li>
+                    <li><strong>Severe burnt taste</strong>: Best to discard.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary class="faq-question">Q: How to prevent pasta from sticking together?</summary>
+                <ul class="faq-answer">
+                    <li>Use **plenty of boiling water**.</li>
+                    <li>Add **pasta after water boils**.</li>
+                    <li>Stir frequently during the first **2 minutes**.</li>
+                    <li>Mix with sauce immediately.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary class="faq-question">Q: What food combinations should be avoided?</summary>
+                <ul class="faq-answer">
+                    <li>**Spinach + Tofu**: Can block calcium absorption.</li>
+                    <li>**Seafood + Vitamin C**: Risk of arsenic reactions.</li>
+                    <li>**Milk + Lemon**: May cause indigestion.</li>
+                    <li>**Tea/Coffee + Milk**: Tannins hinder digestion.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary class="faq-question">Q: What to do if the cake is too dry?</summary>
+                <ul class="faq-answer">
+                    <li>Brush with **syrup or honey**.</li>
+                    <li>Add **cream or jam**.</li>
+                    <li>Use **microwave steaming** with hot water.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary class="faq-question">Q: Why is my rice too wet or too hard?</summary>
+                <ul class="faq-answer">
+                    <li><strong>Too wet:</strong> Let excess water evaporate, stir gently.</li>
+                    <li><strong>Too hard:</strong> Add a little hot water and steam.</li>
+                </ul>
+            </details>
+        </section>
+    </div>
+</div>
+<footer class="footer-container">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Visit Campus Cookery</h3>
+            <p>©2024 Campus Cookery. All rights reserved.</p>
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> |
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="footer-section">
+            <h3>Stay Connected</h3>
+            <p>Follow us on social media for updates:</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3>Newsletter</h3>
+            <p>Subscribe for cooking tips and updates:</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</footer>
+{% endblock %}

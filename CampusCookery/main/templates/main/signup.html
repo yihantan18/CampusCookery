@@ -1,0 +1,66 @@
+{% extends 'nolayout.html' %}
+
+{% block title %}
+Signup - Campus Cookery
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+  <div class="signup-box">
+    <h2 class="page-title">Sign Up</h2>
+    <form action="{% url 'signup' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="input-group">
+        <label for="{{ form.first_name.id_for_label }}">Full Name</label>
+        {% if form.first_name.errors %}
+        <p class="authentication-error">{{ form.first_name.errors.0}}</p>
+        {% endif %}
+        {{ form.first_name }}
+      </div>
+
+      <div class="input-group">
+          <label for="{{ form.profile_picture.id_for_label }}">Profile Picture:</label>
+          {% if form.profile_picture.errors %}
+              <p class="authentication-error">{{ form.profile_picture.errors.0 }}</p>
+          {% endif %}
+          {{ form.profile_picture }}
+      </div>
+
+      <div class="input-group">
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        {% if form.email.errors %}
+        <p class="authentication-error">{{ form.email.errors.0}}</p>
+        {% endif %}
+        {{ form.email }}
+      </div>
+
+      <div class="input-group">
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {% if form.username.errors %}
+            <p class="authentication-error">{{ form.username.errors.0}}</p>
+        {% endif %}
+        {{ form.username }}
+      </div>
+      <div class="input-group">
+          <label for="{{ form.password1.id_for_label }}">Password</label>
+          {% if form.password1.errors %}
+              <p class="authentication-error">{{ form.password1.errors.0}}</p>
+          {% endif %}
+          {{ form.password1 }}
+      </div>
+
+      <div class="input-group">
+          <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+          {% if form.password2.errors %}
+              <p class="authentication-error">{{ form.password2.errors.0}}</p>
+          {% endif %}
+          {{ form.password2 }}
+      </div>
+
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+  </div>
+</div>
+{% endblock %}

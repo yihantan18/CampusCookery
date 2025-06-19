@@ -1,0 +1,35 @@
+{% load custom_filters %}
+
+<a href="{%url 'recipe_detail' recipe.id%}" class="card">
+    <img src="{{recipe.image.url}}" alt="Recipe Image" />
+    <div class="card-info">
+        <h3 class="card-title">{{ recipe.title }}</h3>
+
+        <div class="card-tags">
+            {% for tag in recipe.tag_set.all %}
+                <div class="tag">{{tag.title}}</div>
+            {%endfor%}
+
+            <div class="tag">
+                <i class="fa-solid fa-clock"></i>{{recipe.time_taken}} min
+            </div>
+
+            {% if recipe.rating %}
+                <div class="tag">
+                    <div class="stars">{{recipe.rating}}</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</a>
+
+<!--
+title
+body
+calorie_intake
+created_at
+author
+image
+time_taken
+rating
+-->

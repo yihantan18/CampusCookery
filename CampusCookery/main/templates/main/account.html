@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile - Campus Cookery{% endblock%}
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v={% now 'U' %}" />
+    <script src="{% static 'js/profile.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-info">
+            {% include 'components/profilepic.html' %}
+            <h2>{{user_profile.user.username}}</h2>
+        </div>
+
+        <a href ="{% url 'settings' %}">
+            <i class="fa-solid fa-cog"></i>
+        </a>
+    </div>
+
+    <div class="profile-buttons">
+        <a href="{%url 'recipe_create'%}">
+            <button type="submit">Add a recipe</button>
+        </a>
+        <a href="{%url 'article_create'%}">
+            <button type="submit">Add an article</button>
+        </a>
+    </div>
+
+    <div class="profile-content">
+        {% include 'components/scroll_recipe_cards.html' with recipes=recipes %}
+        {% include 'components/scroll_recipe_cards.html' with articles=recipes %}
+    </div>
+</div>
+{% endblock %}

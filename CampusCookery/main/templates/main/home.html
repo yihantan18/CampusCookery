@@ -1,0 +1,29 @@
+    {% extends 'base.html' %}
+
+    {% block title %}Home - Campus Cookery{% endblock %}
+
+    {% block content %}
+    <div class"hero">
+        <h1 class="home-h1">Campus Cookery</h1>
+        <p class="home-p">
+        Your go-to guide for budget-friendly, easy student meals.
+        Whether you're new to cooking or looking for quick and delicious recipes, we've got you covered!
+        </p>
+    </div>
+    <section class="about-us">
+        <ul class="home-list">
+            <li><strong>Budget-Friendly Recipes:</strong> Affordable meals that won’t break the bank.</li>
+            <li><strong>Step-by-Step Guides:</strong> Easy-to-follow instructions for beginners.</li>
+            <li><strong>Quick & Easy Meals:</strong> Perfect for busy students with limited time.</li>
+            <li><strong>Cooking Tips & Tricks:</strong> Learn kitchen hacks to improve your skills.</li>
+            <li><strong>Community:</strong> Share your recipes, get inspired by fellow food lovers.</li>
+        </ul>
+
+    </section>
+
+    {% if not user.is_authenticated %}
+        <div class="home-button-container">
+            <div class="home-btn"><a href="{% url 'signup' %}">Sign Up</a></div>
+        </div>
+    {% endif %}
+    {% endblock %}

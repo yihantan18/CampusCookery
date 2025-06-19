@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Settings - Campus Cookery{% endblock%}
+
+{% block content %}
+
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-info">
+            {% include 'components/profilepic.html' %}
+            <h2>{{user_profile.user.username}}</h2>
+        </div>
+
+        {% include 'components/darkmode_toggle.html' %}
+    </div>
+    <form class="profile-form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="{{ form.first_name.id_for_label }}">Full Name</label>
+        {% if form.first_name.errors %}
+        <p>{{ form.first_name.errors.0}}</p>
+        {% endif %}
+        {{ form.first_name }}
+
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {% if form.username.errors %}
+        <p>{{ form.username.errors.0}}</p>
+        {% endif %}
+        {{ form.username }}
+
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        {% if form.email.errors %}
+        <p>{{ form.email.errors.0}}</p>
+        {% endif %}
+        {{ form.email }}
+
+        <label for="{{ form.profile_picture.id_for_label }}">Change Profile Picture</label>
+        {% if form.profile_picture.errors %}
+        <p>{{ form.profile_picture.errors.0}}</p>
+        {% endif %}
+        {{ form.profile_picture }}
+
+        <button type="submit">Edit</button>
+    </form>
+</div>
+{% endblock %}

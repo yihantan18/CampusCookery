@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ recipe.title }} - Campus Cookery{% endblock %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/recipe_styles.css' %}?v={% now 'U' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="recipe-container">
+    {% include 'components/favourite_button.html' %}
+    {% include 'components/back_button.html' %}
+
+    <div class="recipe-header">
+        <h1 class="recipe-title">{{ recipe.title }}</h1>
+        <p class="recipe-subtitle">By {{ recipe.author }}</p>
+        <div class="recipe-rating">
+            {% include 'components/rating.html' %}
+        </div>
+    </div>
+
+    <div class="recipe-image-container">
+        {% if recipe.image %}
+            <img src="{{ recipe.image.url }}" class="recipe-image" alt="{{ recipe.title }}">
+        {% endif %}
+    </div>
+
+    <div class="recipe-content">
+        <div class="recipe-info">
+            <div class="calories">
+                <strong>🔥 Calorie Intake:</strong> {{ recipe.calorie_intake }} kcal
+            </div>
+            <div class="time">
+                <strong>⏳ Time Taken:</strong> {{ recipe.time_taken }}
+            </div>
+        </div>
+
+        <div class="recipe-section">
+            <h2>Ingredients</h2>
+            <p>{{ recipe.ingredients|safe }}</p>
+        </div>
+
+        <div class="recipe-section">
+            <h2>Recipe</h2>
+            <p>{{ recipe.body|safe }}</p>
+        </div>
+
+    </div>
+
+    <div class="recipe-footer">
+        {% if request.user == recipe.author %}
+        <a href="{% url 'recipe_edit' recipe.id %}" class="edit-button"><i class="fa-solid fa-pen"></i> Edit</a>
+        <form method="POST" action="{% url 'recipe_delete' recipe.id %}" class="delete-form">
+            {% csrf_token %}
+            <button type="submit" class="delete-button"><i class="fa-solid fa-trash"></i> Delete</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

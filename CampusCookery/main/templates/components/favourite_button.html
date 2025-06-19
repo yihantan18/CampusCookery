@@ -1,0 +1,16 @@
+{% if user.is_authenticated %}
+    <form method="post">
+        {% csrf_token %}
+        {% if favourite %}
+            <input name ="fav" type="hidden" value="false">
+            <button type="submit" class="favourite-button">
+                <i class="fa-solid fa-heart"></i>
+            </button>
+        {% else %}
+            <input name ="fav" type="hidden" value="true">
+            <button type="submit" class="favourite-button">
+                <i class="fa-regular fa-heart"></i>
+            </button>
+        {% endif %}
+    </form>
+{% endif %}

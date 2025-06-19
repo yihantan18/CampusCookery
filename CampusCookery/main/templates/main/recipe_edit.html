@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Create Recipe - Campus Cookery{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2 class="form-title">Edit Recipe</h2>
+    <form action="{% url 'recipe_edit' pk %}" method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="field-wrapper">
+        {{ form.title.errors }}
+        <label for="{{ form.title.id_for_label }}">Title:</label>
+        {{ form.title }}
+    </div>
+    <div class="field-wrapper">
+        {{ form.ingredients.errors }}
+        <label for="{{ form.ingredients.id_for_label }}">Ingredients:</label>
+        {{ form.ingredients }}
+    </div>
+    <div class="field-wrapper">
+        {{ form.body.errors }}
+        <label for="{{ form.body.id_for_label }}">Body:</label>
+        {{ form.body }}
+    </div>
+    <div class="field-wrapper">
+        {{ form.calorie_intake.errors }}
+        <label for="{{ form.calorie_intake.id_for_label }}">Calorie_intake:</label>
+        {{ form.calorie_intake }}
+    </div>
+        <div class="field-wrapper">
+        {{ form.time_taken.errors }}
+        <label for="{{ form.time_taken.id_for_label }}">Time taken:</label>
+        {{ form.time_taken}}
+    </div>
+    <div class="field-wrapper">
+        {{ form.image.errors }}
+        <label for="{{ form.image.id_for_label }}">Image:</label>
+        {{ form.image }}
+    </div>
+
+    <div class="field-wrapper">
+        <label>Select tags:</label>
+        <div class="select-tags">
+            {% for tag in tags %}
+            <label class="tag">
+                <input type="checkbox" name="tags" value="{{ tag.title }}">
+                {{ tag.title }}
+            </label>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-wrapper">
+        <input type="submit" value="Submit"class="form-submit">
+    </div>
+</div>
+{% endblock %}

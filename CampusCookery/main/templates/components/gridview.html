@@ -1,0 +1,20 @@
+<!-- Pass in: title, grid_recipes or grid_articles -->
+
+{% if grid_recipes or grid_articles %}
+<div class="grid-view">
+    {% if title  %}
+        <h3 class="grid-title">{{ title }}</h3>
+    {% endif %}
+
+
+    <div class="cards-grid">
+        {% for recipe in grid_recipes %}
+            {% include 'components/recipe_card.html' with recipe=recipe %}
+        {% endfor %}
+
+        {% for article in grid_articles %}
+            {% include 'components/article_card.html' with article=article %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

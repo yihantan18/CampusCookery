@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Articles - Campus Cookery{% endblock %}
+
+
+{% block content %}
+
+<div class="explore-title">
+    <div class="title-nav">
+        <h2>Explore Articles</h2>
+    </div>
+    <div class="underline"></div>
+</div>
+
+<div class="content-view">
+    {% include 'components/gridview.html' with grid_articles=articles %}
+</div>
+
+{% endblock %}

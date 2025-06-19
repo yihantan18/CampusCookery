@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="explore-title">
+    <div class="title-nav">
+        <h2>Explore Recipes</h2>
+    </div>
+    <div class="underline"></div>
+</div>
+
+<div class="content-view">
+    {% for tag in tags %}
+        {% if tag.recipe.count != 0 %}
+            {% include "components/scroll_recipe_cards.html" with tag=tag recipes=tag.recipe.all %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

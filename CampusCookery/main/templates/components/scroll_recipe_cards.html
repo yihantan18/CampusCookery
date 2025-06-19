@@ -1,0 +1,9 @@
+<!-- Netflix style scrolling cards -->
+<div class="scrollable-cards-container">
+    <div class="scrollable-title">{{ tag }}</div>
+    <div class="scrollable-cards">
+        {% for recipe in recipes %}
+            {% include 'components/recipe_card.html' with recipe=recipe %}
+        {% endfor %}
+    </div>
+</div>

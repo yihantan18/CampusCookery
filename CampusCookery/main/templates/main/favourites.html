@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Favourites - Campus Cookery{% endblock %}
+
+{% block content %}
+<div class="explore-title">
+    <div class="title-nav">
+        <h2>Explore Favourites</h2>
+    </div>
+    <div class="underline"></div>
+</div>
+
+<div class="content-view">
+    {% include 'components/gridview.html' with title="Recipes" grid_recipes=recipes %}
+    {% include 'components/gridview.html' with title="Favourite Articles" grid_articles=articles %}
+</div>
+{% endblock %}

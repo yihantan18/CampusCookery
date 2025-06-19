@@ -1,0 +1,38 @@
+<div class="navigation-bar">
+    <div>
+        <a href="{%url 'home' %}" class="logo">Campus Cookery</a>
+
+        <div class="nav-items">
+            <div class="{% if request.path == '/recipes/' %}nav-current{% endif %}">
+                <i class="fa-solid fa-utensils"></i>
+                <a href="{%url 'recipes' %}">Recipes</a>
+            </div>
+            <div class="{% if request.path == '/articles/' %}nav-current{% endif %}">
+                <i class="fa-solid fa-book"></i>
+                <a href="{%url 'articles' %}">Articles</a>
+            </div>
+            <div class="{% if request.path == '/favourites/' %}nav-current{% endif %}">
+                <i class="fa-solid fa-heart"></i>
+                <a href="{% url 'favourites' %}">Favourites</a>
+            </div>
+            <div class="{% if request.path == '/faq/' %}nav-current{% endif %}">
+                <i class="fa-solid fa-user-group"></i>
+                <a href="{%url 'faq'%}">FAQs</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-user">
+        <!-- settings button -->
+        <a class="{% if request.pah == 'settings' %}nav-current{% endif %} settings" href ="{% url 'settings' %}">
+            <i class="fa-solid fa-cog"></i>
+        </a>
+
+        {% if user.is_authenticated %}
+            {% include 'components/profilepic.html' %}
+            <a class="{% if request.path == '/account/' %}nav-current{% endif %}" href="{%url 'account' %}">{{ user.username }}</a>
+        {% else %}
+            <a href="{%url 'login' %}">Login / Signup</a>
+        {% endif %}
+    </div>
+</div>

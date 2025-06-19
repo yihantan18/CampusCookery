@@ -1,0 +1,31 @@
+<form method="get" class="search-container" action="/search/">
+    <input
+        type="text"
+        name="q"
+        font="Amatic SC"
+        id="searchInput"
+        placeholder="Search"
+        class="searchbox"
+    />
+    <button type="submit">
+        <i class="fa fa-search"></i>
+    </button>
+
+    <!-- Content type recipes or articles name="type" -->
+    <input type="hidden" name="type" id="searchTypeInput" value="recipes">
+    <i id="searchTypeToggle" title="Recipes" class="fa fa-utensils"></i>
+
+    <!-- Tags -->
+    <i id="searchFilterToggle" class="fa fa-list" title="Filter tags"></i>
+
+    <div id="searchFilterModal" class="search-modal hidden">
+        <div class="search-tags">
+            {% for tag in tags %}
+            <label class="tag">
+                <input type="checkbox" name="tags" value="{{ tag.title }}">
+                {{ tag.title }}
+            </label>
+            {% endfor %}
+        </div>
+    </div>
+</form>

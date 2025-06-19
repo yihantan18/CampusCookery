@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ article.title }} - Campus Cookery{% endblock %}
+
+{% block content %}
+<div class="article-container">
+    {% include 'components/favourite_button.html' %}
+    {% include 'components/back_button.html' %}
+
+    <h1 class="article-title">{{ article.title }}</h1>
+    <p class="article-meta">By {{ article.author }} | {{article.created_at|date:"F j, Y"}}</p>
+    {% include 'components/rating.html' %}
+
+
+    <img src="{{article.image.url}}" class="article-image">
+    <div class="article-body">
+        {{ article.body|safe }}  <!-- Allows rich text if the article contains HTML -->
+    </div>
+
+    <div class="article-footer">
+        {% if request.user == article.author %}
+        <a href="{% url 'article_edit' article.id %}" class="edit-button"><i class="fa-solid fa-pen"></i> Edit</a>
+        <form method="POST" action="{% url 'article_delete' article.id %}" class="delete-form">
+            {% csrf_token %}
+            <button type="submit" class="delete-button"><i class="fa-solid fa-trash"></i> Delete</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
